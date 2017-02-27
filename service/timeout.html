@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../libs/angular.min.js"></script>
+	</head>
+	<body>
+		<p ng-controller="httpCtrl">
+			{{info}}
+		</p>
+		<script>
+			var app = angular.module('myApp',[]);
+			app.controller("httpCtrl",["$scope","$timeout",function($scope,$timeout){
+				$scope.info="你好";
+				$timeout(function(){
+					$scope.info="Baby"
+				},2000)
+			}])
+		</script>
+	</body>
+</html>
+

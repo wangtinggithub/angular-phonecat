@@ -1,0 +1,26 @@
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/angular.min.js"></script>
+	</head>
+	<body >
+		<div  ng-app="myApp" ng-controller="costCtrl">
+			<input type="number" ng-model="quantity">
+			<input type="number" ng-model="price">
+			
+			<!--<p>总价 = <span ng-bind-template="{{ (quantity * price) | currency }}"></span></p>-->
+			<p>总价 = <span ng-bind=" (quantity * price) | currency "></span></p>
+			<p>{{"wang" |uppercase}}</p>
+			<p>{{"wang"|lowercase}}</p>
+		</div>
+		<script>
+			var app = angular.module('myApp',[]);
+			app.controller("costCtrl",["$scope",function($scope){
+				$scope.quantity=1;
+				$scope.price=9.9;
+			}])
+			
+		</script>
+	</body>
+</html>

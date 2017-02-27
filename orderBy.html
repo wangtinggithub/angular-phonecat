@@ -6,12 +6,13 @@
 		<script src="libs/angular.min.js"></script>
 	</head>
 	<body ng-controller="phoneList">
-		<p>total number of phones:{{phones.length}}</p>
-		<p>hello {{hello}}</p>
-		<table>
-			<tr><th>row number</th></tr>
-			<tr ng-repeat="i in [0,1,2,3,4,5,6,7]"><td>{{i}}</td></tr>
-		</table>
+		filter:<input type="text" ng-model="query">
+		<ul>
+			<li ng-repeat="phone in phones |filter:query ">
+				 {{phone.name}}
+    			<p>{{phone.snippet}}</p>
+			</li>
+		</ul>
 	</body>
 	<script>
 		var app=angular.module("phone",[]);

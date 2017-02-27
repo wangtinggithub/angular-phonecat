@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="phone">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/angular.min.js"></script>
+	</head>
+	<body ng-controller="phoneList">
+		filter:<input type="text" ng-model="query">
+		orderby:<select ng-model="type">
+			<option value="name">name</option>
+			<option value="age">age</option>
+		</select>
+		<ul>
+			<li ng-repeat="phone in phones |filter:query |orderBy:type">
+				 {{phone.name}}
+    			<p>{{phone.snippet}}</p>
+			</li>
+		</ul>
+	</body>
+	<script>
+		var app=angular.module("phone",[]);
+		app.controller("phoneList",['$scope',function($scope){
+			$scope.phones=[
+			 {"name": "Nexus S",
+		     "snippet": "Fast just got faster with Nexus S.","age": 0},
+		    {"name": "Motorola XOOM™ with Wi-Fi",
+		     "snippet": "The Next, Next Generation tablet.", "age": 1},
+		    {"name": "MOTOROLA XOOM™",
+		     "snippet": "The Next, Next Generation tablet.", "age": 2}
+			];
+			$scope.hello="world";
+			$scope.type="age";
+		}])
+	</script>
+</html>

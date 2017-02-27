@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../libs/angular.min.js"></script>
+	</head>
+	<body>
+		<p ng-controller="httpCtrl">
+			{{time}}
+		</p>
+		<script>
+			var app = angular.module('myApp',[]);
+			app.controller("httpCtrl",["$scope","$interval",function($scope,$interval){
+				$scope.time=new Date().toLocaleTimeString();
+				$interval(function(){
+					$scope.time=new Date().toLocaleTimeString()
+				},1000)
+			}])
+		</script>
+	</body>
+</html>
+

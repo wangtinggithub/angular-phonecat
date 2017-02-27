@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background: yellow;
+				position: relative;
+				top:0px;
+				left:0px;
+				transition: all 0.5s;
+							}
+			.box.ng-hide{
+				top:-200px;
+				left:200px;
+			}
+		</style>
+	</head>
+	<body >
+		显示div<input type="checkbox"     ng-model="check"/>
+		<div ng-hide="check" class="box"></div>
+		<script>
+			var app = angular.module('myApp', ['ngAnimate']);
+		</script>
+	</body>
+</html>
