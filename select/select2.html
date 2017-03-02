@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="phone">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../libs/angular.min.js"></script>
+	</head>
+	<body ng-controller="nameCtrl">
+		<select ng-init="carSelect=cars[0]" ng-options="i for (i,y) in cars" ng-model="carSelect" ></select>
+		<p>你选择的是：{{carSelect.brand}}</p>{{check}}
+		<p>你选择的是：{{carSelect.model}}</p>{{check}}
+		<p>你选择的是：{{carSelect.color}}</p>{{check}}
+	</body>
+	<script>
+		var app=angular.module("phone",[]);
+		app.controller("nameCtrl",['$scope',function($scope){
+			 $scope.cars = {
+				car01 : {brand : "Ford", model : "Mustang", color : "red"},
+				car02 : {brand : "Fiat", model : "500", color : "white"},
+				car03 : {brand : "Volvo", model : "XC90", color : "black"}
+				};
+		}])
+	</script>
+</html>

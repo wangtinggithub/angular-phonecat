@@ -1,0 +1,93 @@
+<html ng-app='expanderModule'>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <style>
+		.expander {
+		    border: 1px solid black;
+		    width: 250px;
+		}
+		
+		.expander>.title {
+		    background-color: black;
+		    color: white;
+		    padding: .1em .3em;
+		    cursor: pointer;
+		}
+		
+		.expander>.body {
+		    padding: .1em .3em;
+		}
+		</style>
+        <script src="../libs/angular.min.js"></script>
+        
+    </head>
+    <body>
+        <div ng-controller='SomeController'>
+            <expander class='expander' expander-title='expander.title' ng-repeat="expander in expanders ">
+                {{expander.text}}
+            </expander>
+        </div>
+    </body>
+    <script>
+		/*var expanderModule=angular.module('expanderModule', [])
+		expanderModule.directive('expander', function() {
+		    return {
+		        restrict : 'EA',
+		        replace : true,
+		        transclude : true,
+		        scope : {
+		            title : '=expanderTitle'
+		        },
+		        template : '<div>'
+		                 + '<div class="title" ng-click="toggle()">{{title}}</div>'
+		                 + '<div class="body" ng-show="showMe" ng-transclude></div>'
+		                 + '</div>',
+		        link : function(scope, element, attrs) {
+		            scope.showMe = false;
+		            scope.toggle = function toggle() {
+		                scope.showMe = !scope.showMe;
+		            }
+		        }
+		    }
+		});
+		expanderModule.controller('SomeController',function($scope) {
+		    $scope.title = '点击展开';
+		    $scope.text = '这里是内部的内容。';
+		});*/
+    	var app=angular.module("expanderModule",[]);
+    	app.directive("expander",function(){
+    		return {
+    			restrict:"EA",
+    			replace:true,
+    			transclude:true,
+    			scope:{
+    				title:"=expanderTitle"
+    			},
+    			template:'<div>'
+                 + '<div class="title" ng-click="toggle()">{{title}}</div>'
+                 + '<div class="body" ng-show="showMe" ng-transclude></div>'
+                 + '</div>',
+                 link: function(scope, element, attrs) {
+		            scope.showMe = false;
+		            scope.toggle = function toggle() {
+		                scope.showMe = !scope.showMe;
+		            }
+		        }
+    		}
+    	
+    	})
+    		app.controller('SomeController',function($scope) {
+			  /*  $scope.title = '点击展开';
+			    $scope.text = '这里是内部的内容。';*/
+			   $scope.expanders=[
+			   {title:"导航1",text:"这是导航1的内容"},
+			   {title:"导航2",text:"这是导航2的内容"},
+			   {title:"导航3",text:"这是导航3的内容"},
+			   
+			   ]
+			});
+    </script>
+</html>
+ 
+
+ 

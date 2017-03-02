@@ -1,0 +1,22 @@
+<html ng-app='app'>
+    <body>
+        <hello>
+        	<span>nihao</span>
+        	<span>你好</span>
+        </hello>
+    </body>
+
+    <script src="../libs/angular.min.js"></script>
+    <script>
+    	var appModule = angular.module('app', []);
+		appModule.directive('hello', function() {
+		    return {
+		        restrict: 'E',
+		        template: '<div>Hi there <div ng-transclude></div></div>',
+		        replace: true,
+		        transclude:true
+		    };
+		});
+    </script>
+    
+</html>

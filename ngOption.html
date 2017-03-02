@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="phone">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/angular.min.js"></script>
+	</head>
+	<body ng-controller="nameCtrl">
+		<select ng-init="check=names[0]" ng-options="i for i in names" ng-model="check" ng-change="showValue()"></select>
+		{{check}}
+	</body>
+	<script>
+		var app=angular.module("phone",[]);
+		app.controller("nameCtrl",['$scope',function($scope){
+			 $scope.names = ["Google", "Runoob", "Taobao"];
+			 $scope.showValue=function(){
+			 	alert($scope.check);
+			 }
+		}])
+	</script>
+</html>

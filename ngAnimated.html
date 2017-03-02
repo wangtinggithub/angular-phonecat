@@ -22,8 +22,9 @@
 		</style>
 	</head>
 	<body >
-		显示div<input type="checkbox"     ng-model="check"/>
-		<div ng-hide="check" class="box"></div>
+		显示div<input type="checkbox"  ng-init="check=true" ng-selected="true"   ng-model="check"/>
+		<div>{{check}}</div>
+		<div ng-hide="!check" class="box"></div>
 		<script>
 			var app = angular.module('myApp', ['ngAnimate']);
 		</script>

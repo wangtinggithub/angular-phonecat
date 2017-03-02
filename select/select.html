@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="../libs/angular.min.js"></script>
+    </head>
+    <body>
+    	<p>数组</p>
+        <div ng-controller="CityController">
+            <select ng-model="city" value="city.id" ng-options="city.name for city in cities" >
+                <!--<option value="">Choose City</option>-->
+            </select>
+            <span ng-bind-template="Best City:{{city.name}},id:>>{{city.id}}">
+            </span>
+        </div>
+    </body>
+    <script type="text/javascript" src="js/angularJs-1.2.16-min.js" ></script>
+    <script type="text/javascript">
+        angular.module("myApp",[])
+        .controller("CityController",function($scope){
+            
+            $scope.cities=[
+                {name:"合肥",id:2},
+                {name:"北京",id:3},
+                {name:"上海",id:4},
+                {name:"舒城",id:5},
+                {name:"纽约",id:6},
+                {name:"络上几",id:7}
+            ];
+            
+            for(var i in $scope.cities){
+                if($scope.cities[i].id==4){//将d是4的城市设为选中项.
+                    $scope.city=$scope.cities[i];
+                    break;
+                }
+            }
+        });
+        
+        
+    </script>
+</html>

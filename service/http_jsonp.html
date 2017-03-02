@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../libs/angular.min.js"></script>
+	</head>
+	<body>
+		<p ng-controller="httpCtrl">
+			{{info}}
+		</p>
+		<script>
+			var app = angular.module('myApp',[]);
+			app.controller("httpCtrl",["$scope","$http",function($scope,$http){
+				/*$http({
+					method:"JSONP",
+					URL:"http://www.b.com/test.php?callback=JSON_CALLBACK"
+				}).then(function(res){
+					$scope.info=res.data;
+				})*/
+				 $http({
+                method: 'JSONP',
+                url: 'http://www.runoob.com/try/angularjs/data/sites.php?callback=JSON_CALLBACK',
+            }).then(function (msg) {
+                console.log(msg);
+            });
+				/* $http
+                .jsonp('http://www.runoob.com/try/angularjs/data/sites.php?callback=JSON_CALLBACK')
+                .then(function (msg){
+                  $scope.info=msg;
+                }); */
+				
+			}])
+		</script>
+	</body>
+</html>
